@@ -38,14 +38,14 @@ img = cv2.imread("image.jpg")
 
 
 # STEP 2: Create an PoseLandmarker object.
-base_options = python.BaseOptions(model_asset_path='pose_landmarker_heavy.task')
+base_options = python.BaseOptions(model_asset_path='MediaPipeEx/pose_landmarker_heavy.task')
 options = vision.PoseLandmarkerOptions(
     base_options=base_options,
     output_segmentation_masks=True)
 detector = vision.PoseLandmarker.create_from_options(options)
 
 # STEP 3: Load the input image.
-image = mp.Image.create_from_file("image.jpg")
+image = mp.Image.create_from_file("MediaPipeEx/image.jpg")
 
 # STEP 4: Detect pose landmarks from the input image.
 detection_result = detector.detect(image)
