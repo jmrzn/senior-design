@@ -28,7 +28,7 @@ def draw_landmarks_on_image(rgb_image, detection_result):
       solutions.drawing_styles.get_default_pose_landmarks_style())
   return annotated_image
 
-FPS = 24
+FPS = 12
 
 base_options = python.BaseOptions(model_asset_path='MediaPipeEx/pose_landmarker_heavy.task')
 options = vision.PoseLandmarkerOptions(
@@ -48,6 +48,7 @@ out = cv2.VideoWriter("MediaPipeEx/live_output.mp4", cv2.VideoWriter_fourcc(*"mp
 frame_idx = 0
 while True:
     ret, frame = cam.read()
+    # out.write(frame)
 
     # Convert BGR (OpenCV) to RGB
     numpy_frame_from_opencv = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
