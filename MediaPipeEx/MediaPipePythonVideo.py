@@ -2,6 +2,8 @@ from mediapipe import solutions
 from mediapipe.framework.formats import landmark_pb2
 import numpy as np
 
+import easygui
+
 import cv2
 
 import mediapipe as mp
@@ -35,8 +37,12 @@ options = vision.PoseLandmarkerOptions(
     running_mode=vision.RunningMode.VIDEO)
 detector = vision.PoseLandmarker.create_from_options(options)
 
+print("Select your pre-recorded video:")
+filePathStudent = easygui.fileopenbox(title= "Select your pre-recorded video", filetypes=["*.mp4", "*.mov"])
+print("Selected file:", filePathStudent)
+
 # Use OpenCV’s VideoCapture to load the input video.
-cap = cv2.VideoCapture("MediaPipeEx/video.mp4")
+cap = cv2.VideoCapture(filePathStudent)
 
 # Load the frame rate of the video using OpenCV’s CV_CAP_PROP_FPS
 # You’ll need it to calculate the timestamp for each frame.
@@ -44,8 +50,9 @@ fps = cap.get(cv2.CAP_PROP_FPS)
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
+#TODO - change output video file name to reflect input video
 # Output video writer
-out = cv2.VideoWriter("MediaPipeEx/output_video.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (width, height))
+out = cv2.VideoWriter(f"MediaPipeEx/output_video.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (width, height))
 
 # Loop through each frame in the video using VideoCapture#read()
 frame_idx = 0

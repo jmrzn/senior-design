@@ -1,7 +1,7 @@
 from KeyFrameDetector.key_frame_detector import keyframeDetection
 
 source_video = "MediaPipeEx\SAMPLE_Instructor.mp4"
-output_dir = "MediaPipeEx\Instructor"
+output_dir = "MediaPipeEx\Instructor2"
 threshold = 0.4
 
 keyframeDetection(

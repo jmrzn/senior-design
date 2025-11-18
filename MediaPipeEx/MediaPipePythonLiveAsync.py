@@ -63,7 +63,7 @@ cam = cv2.VideoCapture(0)
 width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-out = cv2.VideoWriter("MediaPipeEx/live_output.mp4", cv2.VideoWriter_fourcc(*"mp4v"), FPS, (width, height))
+out = cv2.VideoWriter("MediaPipeEx/live_output_async.mp4", cv2.VideoWriter_fourcc(*"mp4v"), FPS, (width, height))
 
 # Create a loop to read the latest frame from the camera using VideoCapture#read()
 frame_idx = 0
